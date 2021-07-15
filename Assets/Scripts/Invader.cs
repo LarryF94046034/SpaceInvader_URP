@@ -20,18 +20,29 @@ public class Invader : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) //名為col的觸發事件
     {
-        if (col.tag == "Ship" || col.tag == "Bullet" ) //如果碰撞的標籤是Ship或Bullet
+        //敵人自撞牆壁
+        if (col.tag == "BottomSide")
+        {
+            Destroy(this.gameObject);
+        }
+        if (col.tag == "Ship")
+        {
+            PlayerSkillCtl.Instance.playerBloodLogic.ReduceBlood(100);
+            Destroy(gameObject); //消滅物件本身
+        }
+
+        if (col.tag == "Bullet" ) //如果碰撞的標籤是Ship或Bullet
         {
             Instantiate(explo,transform.position,transform.rotation); //在外星人的位置產生爆炸
 
-            if (col.tag == "Ship") //如果碰撞的標籤是Ship
-            {
-                Instantiate(explo,col.gameObject.transform.position,col.gameObject.transform.rotation);
-                GameFunction.Instance.GameOver(); 
-                //在碰撞物件的位置產生爆炸，也就是在太空船的位置產生爆炸
-            }
+            // if (col.tag == "Ship") //如果碰撞的標籤是Ship
+            // {
+            //     Instantiate(explo,col.gameObject.transform.position,col.gameObject.transform.rotation);
+            //     GameFunction.Instance.GameOver(); 
+            //     //在碰撞物件的位置產生爆炸，也就是在太空船的位置產生爆炸
+            // }
             
-            Destroy(col.gameObject); //消滅碰撞的物件
+            //Destroy(col.gameObject); //消滅碰撞的物件
             Destroy(gameObject); //消滅物件本身
 
             GameFunction.Instance.AddScore();

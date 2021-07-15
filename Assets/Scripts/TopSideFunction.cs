@@ -17,9 +17,9 @@ public class TopSideFunction : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Bullet")
-        {
-            Destroy(col.gameObject);
-        }
+        // if (col.tag == "Bullet")
+        // {
+        //     Destroy(col.gameObject);
+        // }
     }
 }
