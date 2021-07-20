@@ -5,6 +5,8 @@ using UnityEngine.UI; //使用UI
 
 public class GameFunction : MonoBehaviour
 {
+    //單利
+    public static GameFunction Instance; // 設定Instance，讓其他程式能讀取GameFunction裡的東西
     public GameObject Emeny; //宣告物件，名稱Emeny
     public float time; //宣告浮點數，名稱time
     public float BulletTime; //宣告浮點數，名稱time
@@ -15,7 +17,7 @@ public class GameFunction : MonoBehaviour
     public int Score = 0; // 宣告一整數 Score
     //單例
 
-    public static GameFunction Instance; // 設定Instance，讓其他程式能讀取GameFunction裡的東西
+    
     //起始文字提示
     public GameObject GameTitle; //宣告GameTitle物件
 
@@ -28,10 +30,7 @@ public class GameFunction : MonoBehaviour
     public GameObject RestartButton; //宣告RestartButto的物件
 
     public GameObject QuitButton; //宣告QuitButton的物件
-    //手機移動與自動射擊
-    public GameObject Ship;
-
-    public GameObject Bullet;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -55,18 +54,8 @@ public class GameFunction : MonoBehaviour
             time = 0f; //時間歸零
         }
 
-        BulletTime += Time.deltaTime;
 
-        if (BulletTime > 0.15f && IsPlaying == true) //每隔0.15秒產生一個子彈
-        {
-
-            Vector3 Bullet_pos = Ship.transform.position + new Vector3(0, 0.6f, 0);
-
-            Instantiate(Bullet, Bullet_pos, Ship.transform.rotation);
-
-            BulletTime = 0f;
-
-        }
+        
     }
 
     public void AddScore()
@@ -87,6 +76,8 @@ public class GameFunction : MonoBehaviour
 
         PlayButton.SetActive (false); //不顯示PlayButton
         QuitButton.SetActive (false); //QuitButton設定成不顯示
+
+        GameSystems.Instance.timelineControllerSystem.Play();
 
     }
 

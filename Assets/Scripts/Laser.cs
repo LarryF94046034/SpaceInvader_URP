@@ -21,6 +21,7 @@ public class Laser : MonoBehaviour
         if (col.tag == "Enemy")
         {
             Destroy(col.gameObject);
+            
         }
 
         if (col.tag == "TopSide")
