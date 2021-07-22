@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSkillCtl : UIBase
 {
@@ -23,6 +24,8 @@ public class PlayerSkillCtl : UIBase
     public float maxHealth;
     public float maxBloodSpriteWidth;
     public SpriteRenderer playerBloodSpriteRen;
+    [Header("Slider:MoveSpeedMul")]
+    public Slider moveSpeedSlider;
     
 
     // Start is called before the first frame update
@@ -60,6 +63,11 @@ public class PlayerSkillCtl : UIBase
     public void BindPlayerBloodEvent()
     {
         playerBloodLogic=new BloodLogicWithSprite(playerBloodSpriteRen,maxHealth,0);
+    }
+
+    public void SetMoveSpeedMul()
+    {
+        easyTouchDemoLogic.SetInsideMoveSpeedMul(moveSpeedSlider.value);
     }
 
 }

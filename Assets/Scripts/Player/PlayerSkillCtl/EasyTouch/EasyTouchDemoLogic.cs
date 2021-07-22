@@ -182,4 +182,9 @@ public class EasyTouchDemoLogic
     //     downImage.transform.position=Vector3.Lerp(downImage.transform.position,ower.position,Time.deltaTime*speed);    
     // }
 
+    public void SetInsideMoveSpeedMul(float value)
+    {
+        moveSpeedMul=value;
+    }
+
 }

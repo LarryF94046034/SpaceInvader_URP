@@ -12,6 +12,8 @@ namespace PathCreation.Examples
         float distanceTravelled;
         public float rotationMul;
         public Vector3 tmpPosition;
+        public float updateDelay;    //優化UPDATE，間隔執行FUN
+        public int interval;    //每多少禎調用
 
         void Start() {
             if (pathCreator != null)
@@ -25,14 +27,19 @@ namespace PathCreation.Examples
         {
             if (pathCreator != null)
             {
+                if(Time.frameCount % interval ==0)
+                {
+                     distanceTravelled += speed * Time.deltaTime;
+                    transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
+                    transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
+                }
                 
-                distanceTravelled += speed * Time.deltaTime;
-                transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 
+                   
 
-                tmpPosition=transform.position;
-                transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
-                //transform.eulerAngles=new Vector3(0,0,transform.rotation.x*rotationMul);
+                
+                
+                
                 
                 
             }
