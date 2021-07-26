@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootBehaviour : MonoBehaviour
+public class PlayerShootBehaviour : MonoBehaviour
 {
     public SimpleObjectPool objectPool;
     public GameObject Bullet;
@@ -28,7 +28,7 @@ public class ShootBehaviour : MonoBehaviour
             //Vector3 Bullet_pos = this.transform.position + new Vector3(0, 0.6f, 0);
             Vector3 Bullet_pos = this.transform.position + Vector3.forward*0.6f;
             GameObject newBullet=objectPool.GetOneObject();
-            newBullet.GetComponent<Laser>().SetRotation(this.gameObject);
+            newBullet.GetComponent<Laser>().BulletSetRotationFromPlane(this.gameObject);
             //newBullet.transform.GetChild(0).GetComponent<Laser>().SetRotation(this.gameObject);
             newBullet.SetActive(true);
             newBullet.transform.position=Bullet_pos;

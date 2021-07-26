@@ -33,6 +33,7 @@ public class SimpleObjectPool : MonoBehaviour
     public void CreateOneBlock()    //創造一個物件池空間流程  不管是INITIAL OR OVERPOOL
     {
         GameObject newObject=Instantiate(objectGameObject);  //創造
+        newObject.transform.position=new Vector3(0,0,0);
         newObject.transform.SetParent(poolParent.transform);   //放在這物件下
         objects.Add(newObject);   //添LIST GAMEOBJECT
         objectGameObject.SetActive(false);   //該物件SETFALSE

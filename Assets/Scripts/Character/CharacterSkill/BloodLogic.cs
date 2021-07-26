@@ -30,6 +30,10 @@ public class BloodLogicWithSprite
             {
                 GameSystems.Instance.gameEventSystem.PlayerDie();
             }
+            if(characterID==1)
+            {
+                MonoBehaviour.Destroy(characterSprite.transform.parent.gameObject);
+            }
             return;
         }
         characterSprite.size=new Vector2(maxWidth*(nowHealth/maxHealth),characterSprite.size.y);

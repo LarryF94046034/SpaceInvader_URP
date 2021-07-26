@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserChild : MonoBehaviour
+public class PlayerLaserParent : MonoBehaviour
 {
     private List<GameObject> timerList=new List<GameObject>();
-    // Start is called before the first frame update
+    private Vector3 moveVector=new Vector3(0,1,0);
     void Start()
     {
         FunctionTimer.Create(()=>{
@@ -39,19 +39,24 @@ public class LaserChild : MonoBehaviour
         // CancelInvoke();
 
     }
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.tag == "Enemy")
-        {
-            //Destroy(col.gameObject);
-            Debug.Log("HitEnemy");
-            Destroy(col.gameObject);
-        }
 
-        if ((col.tag == "TopSide")&&(col.tag=="RightSide")&&(col.tag=="LeftSide")&&(col.tag=="BottomSide"))
-        {
-            //Destroy(this.gameObject);
-            this.gameObject.SetActive(false);
-        }
+
+    void Update()
+    {
+        //gameObject.transform.position += new Vector3(0,0.1f,0);
+        gameObject.transform.position += moveVector*0.1f;
+        
+        
+    }
+
+    public void SetRotation()
+    {
+        moveVector.x=transform.forward.x;
+        moveVector.y=transform.forward.y;
+    }
+
+    public void BulletSetRotationFromPlane(GameObject tmpGObj)
+    {
+        this.transform.rotation=tmpGObj.transform.rotation;
     }
 }

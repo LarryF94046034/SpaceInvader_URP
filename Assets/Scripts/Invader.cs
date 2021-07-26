@@ -25,7 +25,7 @@ public class Invader : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (col.tag == "Ship")
+        if (col.tag == "Player")
         {
             PlayerSkillCtl.Instance.playerBloodLogic.ReduceBlood(100);
             Destroy(gameObject); //消滅物件本身

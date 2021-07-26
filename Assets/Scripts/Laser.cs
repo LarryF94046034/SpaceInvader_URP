@@ -5,6 +5,7 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     private bool cancelInvoke=false;
+    private Vector3 moveVector=new Vector3();
     private List<GameObject> timerList=new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -60,9 +61,10 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        moveVector.x=transform.forward.x;
+        moveVector.y=transform.forward.y;
         //gameObject.transform.position += new Vector3(0,0.1f,0);
-        gameObject.transform.position += transform.forward*0.1f;
+        gameObject.transform.position += moveVector*0.1f;
         
     }
 
@@ -82,8 +84,16 @@ public class Laser : MonoBehaviour
         }
     }
 
-    public void SetRotation(GameObject tmpGObj)
+    public void BulletSetRotationFromPlane(GameObject tmpGObj)
     {
         this.transform.rotation=tmpGObj.transform.rotation;
+    }
+    public void SetLocalRotation(GameObject FromGObj,GameObject SetGObj)
+    {
+        SetGObj.transform.localRotation=FromGObj.transform.localRotation;
+    }
+    public void SetLocalPosition(GameObject FromGObj,GameObject SetGObj)
+    {
+        SetGObj.transform.localPosition=FromGObj.transform.localPosition;
     }
 }
