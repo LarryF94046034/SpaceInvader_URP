@@ -11,13 +11,6 @@ public class SimpleObjectPool : MonoBehaviour
     public GameObject objectGameObject;
     [Header("設定:數量")]
     public int objectNum; 
-    [Header("暫存GObj")]
-    public GameObject tmpObject;  
-    [Header("暫存額外增加ReleasePool")]
-    //public List<GameObject> releasePool=new List<GameObject>();  
-    public int additive;
-    [Header("暫存往後推倒沒工作的額外ReleasePool")]
-    public List<GameObject> releasePool2=new List<GameObject>();  
     [Header("設定:設定父輩，放在下面")]
     public GameObject poolParent; 
 
@@ -37,7 +30,7 @@ public class SimpleObjectPool : MonoBehaviour
         newObject.transform.SetParent(poolParent.transform);   //放在這物件下
         objects.Add(newObject);   //添LIST GAMEOBJECT
         objectGameObject.SetActive(false);   //該物件SETFALSE
-        tmpObject=newObject;
+        
     }
     public GameObject GetOneObject()
     {
@@ -71,39 +64,5 @@ public class SimpleObjectPool : MonoBehaviour
         
     }
 
-    public void ReleaseOverPool()
-    {
-        if(objects.Count<=objectNum)
-        {
-            return;
-        }
-
-        additive=objects.Count-objectNum;
-
-        // for(int i=0;i<releasePool.Count;i++)
-        // {
-        //     objects.Remove(releasePool[i]);
-        // }
-        int counter=0;
-        for(int i=objects.Count-10;i>=0;)
-        {
-            if(objects[i].activeSelf==false)
-            {
-                objects.Remove(objects[i]);
-                releasePool2.Add(objects[i]);
-            }
-            i--;
-            counter++;
-            if(counter>=additive-1)
-            {
-                break;
-            }
-        }
-        for(int i=0;i<releasePool2.Count;i++)
-        {
-            Destroy(releasePool2[i]);
-        }
-        releasePool2.Clear();
-        additive=0;
-    }
+    
 }

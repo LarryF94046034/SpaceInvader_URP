@@ -22,7 +22,7 @@ public class BloodLogicWithSprite
     float bloodCount=1;
     public void ReduceBlood(float reduce)
     {
-        Debug.Log(reduce);
+        //Debug.Log(reduce);
         nowHealth=nowHealth-reduce;
         if(nowHealth<=0)
         {

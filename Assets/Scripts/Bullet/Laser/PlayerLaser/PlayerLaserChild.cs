@@ -17,7 +17,7 @@ public class PlayerLaserChild : MonoBehaviour
         if (col.tag == "Enemy")
         {
             //Destroy(col.gameObject);
-            Debug.Log("HitEnemy");
+            //Debug.Log("HitEnemy");
             this.gameObject.transform.parent.gameObject.SetActive(false);
         }
 

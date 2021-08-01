@@ -11,8 +11,8 @@ public class BossLeftCircleRotateShoot : MonoBehaviour
         {
             GameSystems.Instance.bossLeftShootLogic.CircleRotateShoot();
         }
-        Debug.Log("LeftShoot");
-        Debug.Log(BossLeftStateCtl.Instance.timer);
+        //Debug.Log("LeftShoot");
+        //Debug.Log(BossLeftStateCtl.Instance.timer);
         this.gameObject.SetActive(false);
         Destroy(this);
         FunctionTimer.Create(()=>
