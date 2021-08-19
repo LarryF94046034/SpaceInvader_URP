@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BloodLogicWithSprite
 {
+    [Header("CharacterTypeID")]
     int characterID;
+    [Header("Set")]
     SpriteRenderer characterSprite;
+    [Header("Data")]
     float maxWidth;
     float maxHealth;
     float nowHealth;
+    [Header("Event")]
+    public string eventHeader;
+    public event Action dieEvent;
     public BloodLogicWithSprite(SpriteRenderer tmpSprite,float tmpMaxHealth,int tmpCharacterID)
     {
         characterSprite=tmpSprite;
@@ -28,11 +35,22 @@ public class BloodLogicWithSprite
         {
             if(characterID==0)
             {
+                if(dieEvent!=null)
+                {
+                    dieEvent();
+                }
+                
                 GameSystems.Instance.gameEventSystem.PlayerDie();
             }
             if(characterID==1)
             {
-                MonoBehaviour.Destroy(characterSprite.transform.parent.gameObject);
+                if(dieEvent!=null)
+                {
+                    dieEvent();
+                }
+                // MonoBehaviour.Destroy(characterSprite.transform.parent.gameObject);
+                // MonoBehaviour.Instantiate(GameSystems.Instance.effectSystem.explodeObject,characterSprite.gameObject.transform.position,characterSprite.gameObject.transform.rotation); //在外星人的位置產生爆炸
+                // GameFunction.Instance.KillAmount++;
             }
             return;
         }

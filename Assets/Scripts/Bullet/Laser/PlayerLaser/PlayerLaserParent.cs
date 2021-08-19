@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerLaserParent : MonoBehaviour
 {
+    public Rigidbody2D rigidbody2D;
     private List<GameObject> timerList=new List<GameObject>();
-    private Vector3 moveVector=new Vector3(0,1,0);
+    public Vector3 moveVector=new Vector3(0,1,0);
     void Start()
     {
+        //rigidbody2D.velocity=moveVector;
+
+
         FunctionTimer.Create(()=>{
             this.gameObject.SetActive(false);
         },3.0f,null,timerList);
@@ -43,8 +47,9 @@ public class PlayerLaserParent : MonoBehaviour
 
     void Update()
     {
-        //gameObject.transform.position += new Vector3(0,0.1f,0);
         gameObject.transform.position += moveVector*0.1f;
+
+        
         
         
     }

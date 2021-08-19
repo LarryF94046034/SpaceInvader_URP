@@ -8,8 +8,8 @@ public class PlayerLaserChild : MonoBehaviour
     {
         if (col.tag == "SmallPlaneEnemy")
         {
-            SmallPlaneStateCtl planeStateCtl=col.transform.parent.transform.parent.GetComponent<SmallPlaneStateCtl>();
-            planeStateCtl.planeBloodLogic.ReduceBlood(100);
+            CharacterBlood planeStateCtl=col.transform.parent.transform.parent.GetComponent<CharacterBlood>();
+            planeStateCtl.planeBloodLogic.ReduceBlood(500);
             //PlayerSkillCtl.Instance.playerBloodLogic.ReduceBlood(100);
             this.gameObject.transform.parent.gameObject.SetActive(false);
         }

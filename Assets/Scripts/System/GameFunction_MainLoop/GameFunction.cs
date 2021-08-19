@@ -17,19 +17,41 @@ public class GameFunction : MonoBehaviour
     public int Score = 0; // 宣告一整數 Score
     //單例
 
-    
+    [Header("Text")]
     //起始文字提示
     public GameObject GameTitle; //宣告GameTitle物件
 
     public GameObject GameOverTitle; //宣告GameOverTitle物件
+    public GameObject GameWinTitle; //宣告GameWinTitle物件
 
-    public GameObject PlayButton; //宣告PlayButton物件
-
+    
+    [Header("IsPlaying")]
     public bool IsPlaying = false; // 宣告IsPlaying 的布林資料，並設定初始值false
+    [Header("Button")]
+    public GameObject PlayButton; //宣告PlayButton物件
     //重新開始及離開
-    public GameObject RestartButton; //宣告RestartButto的物件
+    public GameObject RestartButton; //重新這關遊戲Btn
 
-    public GameObject QuitButton; //宣告QuitButton的物件
+    public GameObject QuitButton; //離開遊戲Btn
+    public GameObject ContinueButton; //下一關Btn
+    [Header("KillAmount")]
+    public int killAmountMax;
+    private int killAmount;
+    public int KillAmount
+    {
+        get
+        {
+            return killAmount;
+        }
+        set
+        {
+            killAmount=value;
+            if(killAmount==killAmountMax)
+            {
+                CompleteLevel();
+            }
+        }
+    }
     
 
     // Start is called before the first frame update
@@ -41,18 +63,21 @@ public class GameFunction : MonoBehaviour
 
         GameOverTitle.SetActive(false); //設定GameOverTitle不顯示
         RestartButton.SetActive(false); //RestartButton設定成不顯示
+
+
+        GameStart();
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime; //時間增加
-        if(time>0.5f && IsPlaying == true) //如果時間大於0.5(秒)
-        {
-            Vector3 pos = new Vector3(Random.Range(-2.5f,2.5f),4.5f,0); //宣告位置pos，Random.Range(-2.5f,2.5f)代表X是2.5到-2.5之間隨機
-            Instantiate(Emeny,pos,transform.rotation);//產生敵人
-            time = 0f; //時間歸零
-        }
+        // time += Time.deltaTime; //時間增加
+        // if(time>0.5f && IsPlaying == true) //如果時間大於0.5(秒)
+        // {
+        //     Vector3 pos = new Vector3(Random.Range(-2.5f,2.5f),4.5f,0); //宣告位置pos，Random.Range(-2.5f,2.5f)代表X是2.5到-2.5之間隨機
+        //     Instantiate(Emeny,pos,transform.rotation);//產生敵人
+        //     time = 0f; //時間歸零
+        // }
 
 
         
@@ -69,7 +94,7 @@ public class GameFunction : MonoBehaviour
 
     public void GameStart() 
     {
-
+        Debug.Log("Play");
         IsPlaying = true; //設定IsPlaying為true，代表遊戲正在進行中
 
         GameTitle.SetActive (false); //不顯示GameTitle
@@ -105,4 +130,15 @@ public class GameFunction : MonoBehaviour
         Application.Quit(); //離開應用程式
 
     }
+    #region Level One
+    public void CompleteLevel()
+    {
+        IsPlaying = false; //IsPlaying設定成false，停止產生外星人
+
+        GameWinTitle.SetActive(true); //設定為ture，顯示GameOverTitle
+        RestartButton.SetActive(true); //RestartButton設定成顯示
+        ContinueButton.SetActive(true); //ContinueButton設定成顯示
+
+    }
+    #endregion
 }

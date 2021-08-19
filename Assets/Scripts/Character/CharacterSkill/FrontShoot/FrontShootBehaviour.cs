@@ -5,12 +5,23 @@ using UnityEngine;
 public class FrontShootBehaviour : MonoBehaviour
 {
     public SimpleObjectPool colliderPool;
-    public GameObject Bullet;
     public float BulletTime; //宣告浮點數，名稱time
     public Vector3 shootPosition_Additive;
     //間隔
-    public float shootPerTime=0.15f;
+    private float shootPerTime;
 
+
+    void Start()
+    {
+        if(this.gameObject.tag=="Player")
+        {
+            shootPerTime=0.5f;
+        }
+        if(this.gameObject.tag=="SmallPlaneEnemy")
+        {
+            shootPerTime=3.5f;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
