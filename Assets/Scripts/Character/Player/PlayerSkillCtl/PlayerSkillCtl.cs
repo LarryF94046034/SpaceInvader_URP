@@ -10,7 +10,7 @@ public class PlayerSkillCtl : UIBase
     public GameObject player;
     //邏輯
     [Header("easytouch")]
-    EasyTouchDemoLogic easyTouchDemoLogic;     //Bind,Update
+    public EasyTouchDemoLogic easyTouchDemoLogic;     //Bind,Update
     public string owerImg;
     public string downImg;
     public float moveSpeedMul;

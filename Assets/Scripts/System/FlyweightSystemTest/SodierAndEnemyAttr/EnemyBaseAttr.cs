@@ -11,16 +11,12 @@ public class EnemyBaseAttr : CharacterBaseAttr
 		m_InitCritRate =CritRate;
 	}
 
-    public int InitCritRate;
-    // Start is called before the first frame update
-    void Start()
+    public int GetInitCritRate()
     {
-        
+        return m_InitCritRate;
     }
+    
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

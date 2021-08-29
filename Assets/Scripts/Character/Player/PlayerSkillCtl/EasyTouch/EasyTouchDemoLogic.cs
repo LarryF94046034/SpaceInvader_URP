@@ -17,7 +17,7 @@ public class EasyTouchDemoLogic
         this.minHeight=tmpMinHeight;
         this.maxHeight=tmpMaxHeight;
     }
-    Vector2 orginPos;
+    public Vector2 orginPos;
     public float radius=200;
     private GameObject target;
     public GameObject Target
@@ -84,7 +84,7 @@ public class EasyTouchDemoLogic
     public void OnDrag(BaseEventData eventData)
     {
         PointerEventData tmpData=(PointerEventData)eventData;
-        orginPos=SaveOriginPos;  //這東東好像第一次後調用Drag會遺失或定值或跑值，讓角色一直朝同一方向移動，所以重新付值
+        //orginPos=SaveOriginPos;  //這東東好像第一次後調用Drag會遺失或定值或跑值，讓角色一直朝同一方向移動，所以重新付值
         deltaPos=tmpData.position-orginPos; //downImage會動，原本是不會動的圓心變imagetransform
         if(deltaPos.magnitude<radius)
         {
@@ -114,7 +114,8 @@ public class EasyTouchDemoLogic
     {
         isPress=false;
         deltaPos=Vector2.zero;
-        ower.position=SaveOriginPos;
+        //ower.position=SaveOriginPos;
+        ower.position=orginPos;
 
         //PlayerManager.Instance.PlayerCtl.fSMManager.ChangeState((sbyte)RolerBase.AnimationEnum.Idle);
 

@@ -145,7 +145,7 @@ public class RTSManager : MonoBehaviour
     {
         for(int i=0;i<moveObjects.Count;i++)
         {
-            if(moveObjects[i]!=null)
+            if(moveObjects[i]!=null&&playerObject!=null)
             {
                 moveObjects[i].transform.DOMove(playerObject.transform.position+frontVector,duration);
             }

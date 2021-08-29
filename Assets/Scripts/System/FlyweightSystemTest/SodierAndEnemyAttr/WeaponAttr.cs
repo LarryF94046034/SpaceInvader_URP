@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponAttr : MonoBehaviour
+public class WeaponAttr 
 {
     private int m_MaxHP;  //最高HP
     private float m_MoveSpeed;  //目前移速

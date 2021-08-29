@@ -9,12 +9,12 @@ public abstract class ICharacterAttr
     //protected IAttrStra
     public ICharacterAttr(){}
     //設定基本屬性
-    protected void SetBaseAttr(BaseAttr baseAttr)
+    public void SetBaseAttr(BaseAttr baseAttr)
     {
         m_BaseAttr=baseAttr;
     }
     //取得基本屬性
-    protected BaseAttr GetBaseAttr()
+    public BaseAttr GetBaseAttr()
     {
         return m_BaseAttr;
     }
