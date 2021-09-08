@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ISoldier : MonoBehaviour
+// Soldier類型
+public enum ENUM_Soldier
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	Null = 0,
+	Rookie	= 1,	// 新兵
+	Sergeant= 2,	// 中士
+	Captain = 3,	// 上尉
+	Captive	= 4, 	// 俘兵
+	Max,
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public abstract class ISoldier : ICharacter
+{
+    protected ENUM_Soldier m_emSoldier = ENUM_Soldier.Null;
+    // 播放音效
+	public abstract void DoPlayKilledSound();
+
+	// 播放特效
+	public abstract void DoShowKilledEffect();
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class ICharacterAttr 
 {
     protected BaseAttr m_BaseAttr=null;    //基本腳色數值
+    protected IAttrStrategy m_AttrStrategy=null;// 數值的計算策略
     protected int m_NowHP;   //目前HP
     //protected IAttrStra
     public ICharacterAttr(){}
@@ -20,16 +21,16 @@ public abstract class ICharacterAttr
     }
 
 
-    // //設定計算策略
-    // protected void SetAttStrategy(BaseAttr baseAttr)
-    // {
-    //     m_AttrStrategy=
-    // }
-    // //取得計算策略
-    // protected BaseAttr GetAttStrategy()
-    // {
-    //     return m_AttrStrategy;
-    // }
+    //設定計算策略
+    public void SetAttStrategy(IAttrStrategy theStrategy)
+    {
+        m_AttrStrategy=theStrategy;
+    }
+    //取得計算策略
+    public IAttrStrategy GetAttStrategy()
+    {
+        return m_AttrStrategy;
+    }
 
     //目前HP
     public int GetNowHP()

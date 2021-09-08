@@ -25,5 +25,19 @@ public class SodierAttr : ICharacterAttr
     {
         m_AddMaxHP=AddMaxHP;
     }
+    #region SETGET SoldierLv
+    // 設定等級
+	public void SetSoldierLv(int Lv)
+	{
+		m_SoldierLv = Lv;
+	}
+
+	// 取得等級
+	public int GetSoldierLv()
+	{
+		return m_SoldierLv ;
+	}
+    #endregion
+    
     
 }

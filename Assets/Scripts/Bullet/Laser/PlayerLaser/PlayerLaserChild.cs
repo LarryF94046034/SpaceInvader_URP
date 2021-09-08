@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerLaserChild : MonoBehaviour
 {
+    public int bulletAttack;
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == "SmallPlaneEnemy")
         {
             CharacterBlood planeStateCtl=col.transform.parent.transform.parent.GetComponent<CharacterBlood>();
-            planeStateCtl.planeBloodLogic.ReduceBlood(500);
+            planeStateCtl.planeBloodLogic.ReduceBlood(bulletAttack);
             //PlayerSkillCtl.Instance.playerBloodLogic.ReduceBlood(100);
             this.gameObject.transform.parent.gameObject.SetActive(false);
         }
